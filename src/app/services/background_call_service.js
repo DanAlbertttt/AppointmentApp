@@ -190,13 +190,15 @@ class BackgroundCallService {
 
   async playCallRingtone() {
     try {
-      // Configure audio to stay active in background (simplified)
+      // Configure audio to stay active in background (enhanced for Android)
       await Audio.setAudioModeAsync({
         allowsRecordingIOS: false,
         staysActiveInBackground: true,
         playsInSilentModeIOS: true,
         shouldDuckAndroid: false,
         playThroughEarpieceAndroid: false,
+        interruptionModeIOS: Audio.INTERRUPTION_MODE_IOS_DO_NOT_MIX,
+        interruptionModeAndroid: Audio.INTERRUPTION_MODE_ANDROID_DO_NOT_MIX,
       });
 
       // Try multiple approaches for maximum reliability
